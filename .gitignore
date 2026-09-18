@@ -1,0 +1,17 @@
+# Secrets: never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.streamlit/secrets.toml
+
+# Python / tooling
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local run artifacts (keep *_latest.json and traces/)
+results/eval_*_2*.json
+results/run_*.log

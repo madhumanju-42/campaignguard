@@ -1,0 +1,9 @@
+{
+  "live_agent_integration": "verified",
+  "reason": "Live success and failed-tool-recovery traces met all criteria.",
+  "evidence_files": [
+    "results/traces/live_success_trace.json",
+    "results/traces/live_failed_tool_recovery_trace.json"
+  ],
+  "checked_at_utc": "2026-09-17T03:56:58+00:00"
+}

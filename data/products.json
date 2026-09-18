@@ -1,0 +1,191 @@
+{
+  "dataset_version": "cg-synthetic-v1.1",
+  "notice": "FICTIONAL DATA. Northbeam Bank and all products, terms, and disclosures are invented for a demonstration.",
+  "disclosures": [
+    {
+      "disclosure_id": "DISC-BONUS-TERMS",
+      "text": "Bonus terms apply: northbeam.example/offers.",
+      "match_patterns": [
+        "bonus terms apply",
+        "northbeam\\.example/offers"
+      ]
+    },
+    {
+      "disclosure_id": "DISC-FEE",
+      "text": "Fees may apply; see fee schedule.",
+      "match_patterns": [
+        "fees may apply",
+        "see (the )?fee schedule"
+      ]
+    },
+    {
+      "disclosure_id": "DISC-DEPOSIT-INSURANCE",
+      "text": "Deposits insured up to applicable limits.",
+      "match_patterns": [
+        "insured up to applicable limits"
+      ]
+    },
+    {
+      "disclosure_id": "DISC-RATE-VARIABLE",
+      "text": "Rates are variable and may change.",
+      "match_patterns": [
+        "rates are variable",
+        "variable rate"
+      ]
+    },
+    {
+      "disclosure_id": "DISC-CREDIT-APPROVAL",
+      "text": "Subject to credit approval.",
+      "match_patterns": [
+        "subject to credit approval"
+      ]
+    },
+    {
+      "disclosure_id": "DISC-SMS-OPTOUT",
+      "text": "Reply STOP to opt out.",
+      "match_patterns": [
+        "reply stop"
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "NBP-CHK-100",
+      "name": "Northbeam Business Essentials Checking",
+      "type": "checking",
+      "offer": {
+        "bonus_amount": 300,
+        "bonus_form": "cash bonus deposited to the account",
+        "valid_from": "2026-07-01",
+        "valid_through": "2026-10-31",
+        "bonus_timing": "Bonus is deposited within 90 days after all requirements are met."
+      },
+      "eligibility": [
+        "New Northbeam business checking customers only",
+        "Deposit $5,000 in new money within 30 days of account opening",
+        "Maintain the $5,000 balance for 60 days"
+      ],
+      "fees": [
+        {
+          "name": "monthly maintenance fee",
+          "amount": 15,
+          "frequency": "monthly"
+        }
+      ],
+      "fee_waivers": [
+        "$2,500 minimum daily balance",
+        "$1,000 in monthly debit card purchases"
+      ],
+      "required_disclosures": {
+        "email": [
+          "DISC-BONUS-TERMS",
+          "DISC-FEE",
+          "DISC-DEPOSIT-INSURANCE"
+        ],
+        "web": [
+          "DISC-BONUS-TERMS",
+          "DISC-FEE",
+          "DISC-DEPOSIT-INSURANCE"
+        ],
+        "sms": [
+          "DISC-BONUS-TERMS",
+          "DISC-SMS-OPTOUT"
+        ]
+      }
+    },
+    {
+      "product_id": "NBP-SAV-200",
+      "name": "Northbeam Business Growth Savings",
+      "type": "savings",
+      "offer": {
+        "bonus_amount": 150,
+        "bonus_form": "cash bonus deposited to the account",
+        "valid_from": "2026-05-01",
+        "valid_through": "2026-08-31",
+        "bonus_timing": "Bonus is deposited within 30 days after the 90-day balance requirement is met."
+      },
+      "eligibility": [
+        "New Northbeam business savings customers only",
+        "Deposit $25,000 in new money within 15 days",
+        "Maintain the $25,000 balance for 90 days"
+      ],
+      "fees": [
+        {
+          "name": "monthly maintenance fee",
+          "amount": 10,
+          "frequency": "monthly"
+        }
+      ],
+      "fee_waivers": [
+        "$5,000 minimum daily balance"
+      ],
+      "required_disclosures": {
+        "email": [
+          "DISC-BONUS-TERMS",
+          "DISC-FEE",
+          "DISC-DEPOSIT-INSURANCE",
+          "DISC-RATE-VARIABLE"
+        ],
+        "web": [
+          "DISC-BONUS-TERMS",
+          "DISC-FEE",
+          "DISC-DEPOSIT-INSURANCE",
+          "DISC-RATE-VARIABLE"
+        ],
+        "sms": [
+          "DISC-BONUS-TERMS",
+          "DISC-SMS-OPTOUT"
+        ]
+      }
+    },
+    {
+      "product_id": "NBP-CARD-300",
+      "name": "Northbeam Business Rewards Card",
+      "type": "credit_card",
+      "offer": {
+        "bonus_amount": 500,
+        "bonus_form": "statement credit",
+        "valid_from": "2026-09-01",
+        "valid_through": "2026-12-31",
+        "bonus_timing": "Statement credit posts within 8 weeks after the spend requirement is met."
+      },
+      "eligibility": [
+        "Subject to credit approval",
+        "Spend $6,000 in purchases within the first 3 months after account opening"
+      ],
+      "fees": [
+        {
+          "name": "annual fee",
+          "amount": 95,
+          "frequency": "annual",
+          "note": "$0 the first year, then $95"
+        },
+        {
+          "name": "foreign transaction fee",
+          "amount_percent": 3,
+          "frequency": "per transaction"
+        }
+      ],
+      "fee_waivers": [
+        "Annual fee waived for the first year only"
+      ],
+      "required_disclosures": {
+        "email": [
+          "DISC-BONUS-TERMS",
+          "DISC-FEE",
+          "DISC-CREDIT-APPROVAL"
+        ],
+        "web": [
+          "DISC-BONUS-TERMS",
+          "DISC-FEE",
+          "DISC-CREDIT-APPROVAL"
+        ],
+        "sms": [
+          "DISC-BONUS-TERMS",
+          "DISC-SMS-OPTOUT",
+          "DISC-CREDIT-APPROVAL"
+        ]
+      }
+    }
+  ]
+}

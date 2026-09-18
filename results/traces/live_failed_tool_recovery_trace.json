@@ -1,0 +1,161 @@
+{
+  "trace_type": "live",
+  "llm_provider": "openai (Responses API)",
+  "model": "gpt-5-mini",
+  "proves_live_integration": true,
+  "recorded_at_utc": "2026-09-17T03:56:58+00:00",
+  "scenario": "failed_tool_recovery",
+  "campaign_id": "C18",
+  "fault_injection": "search_policy:1",
+  "sanitization": "API keys/headers never recorded; strings truncated to 300 chars; reasoning items excluded.",
+  "criteria": {
+    "injected_fault_reached_model": true,
+    "agent_continued_after_failure": true,
+    "final_output_schema_valid": true,
+    "semantic_llm_review_complete": true
+  },
+  "criteria_met": true,
+  "mcp_tool_calls": [
+    {
+      "tool": "get_product",
+      "arguments": {
+        "product_id": "NBP-CARD-300"
+      },
+      "requested_by": "orchestrator",
+      "duration_ms": 5.9,
+      "ok": true,
+      "error": null,
+      "source_ids": [
+        "NBP-CARD-300:offer",
+        "NBP-CARD-300:eligibility",
+        "NBP-CARD-300:fees",
+        "DISC-BONUS-TERMS",
+        "DISC-FEE",
+        "DISC-CREDIT-APPROVAL",
+        "DISC-SMS-OPTOUT"
+      ]
+    },
+    {
+      "tool": "check_campaign",
+      "arguments": {
+        "campaign": {
+          "campaign_id": "C18",
+          "product_id": "NBP-CARD-300",
+          "channel": "email",
+          "subject": "No waiting for your statement credit",
+          "body": "Spend $6,000 in purchases in the first 3 months with the Northbeam Business Rewa\u2026"
+        },
+        "review_date": "2026-09-15"
+      },
+      "requested_by": "orchestrator",
+      "duration_ms": 4.9,
+      "ok": true,
+      "error": null,
+      "source_ids": []
+    },
+    {
+      "tool": "search_policy",
+      "arguments": {
+        "query": "instant statement credit timing language \"no waiting\" \"statement credit posts\"",
+        "channel": "email",
+        "top_k": 3
+      },
+      "requested_by": "llm",
+      "duration_ms": 2.5,
+      "ok": false,
+      "error": "Error executing tool search_policy: Injected test fault: search_policy temporarily unavailable. Retry the call.",
+      "source_ids": []
+    },
+    {
+      "tool": "search_policy",
+      "arguments": {
+        "query": "instant statement credit timing language \"no waiting\" \"statement credit posts\"",
+        "channel": "email",
+        "top_k": 3
+      },
+      "requested_by": "llm",
+      "duration_ms": 15.5,
+      "ok": true,
+      "error": null,
+      "source_ids": [
+        "POL-002",
+        "POL-001",
+        "POL-007"
+      ]
+    }
+  ],
+  "agent_trace": [
+    {
+      "round": 0,
+      "event": "llm_tool_request",
+      "tool": "search_policy",
+      "call_id": "call_TQdah4gCX2HxQa8CO8Bdqt5n",
+      "arguments": {
+        "query": "instant statement credit timing language \"no waiting\" \"statement credit posts\"",
+        "channel": "email",
+        "top_k": 3
+      },
+      "mcp_ok": false,
+      "error": "Error executing tool search_policy: Injected test fault: search_policy temporarily unavailable. Retry the call."
+    },
+    {
+      "round": 1,
+      "event": "llm_tool_request",
+      "tool": "search_policy",
+      "call_id": "call_kXcKa23GNaZTg2teps8ZF2jj",
+      "arguments": {
+        "query": "instant statement credit timing language \"no waiting\" \"statement credit posts\"",
+        "channel": "email",
+        "top_k": 3
+      },
+      "mcp_ok": true,
+      "duration_ms": 15.5,
+      "returned_source_ids": [
+        "POL-002",
+        "POL-001",
+        "POL-007"
+      ]
+    },
+    {
+      "round": 2,
+      "event": "final_output",
+      "schema_valid": true,
+      "n_findings": 1
+    }
+  ],
+  "review_status": "issues_found",
+  "required_checks": [
+    {
+      "name": "product_terms",
+      "state": "complete",
+      "detail": "Product terms retrieved via MCP."
+    },
+    {
+      "name": "deterministic_checks",
+      "state": "complete",
+      "detail": "0 deterministic finding(s)."
+    },
+    {
+      "name": "semantic_llm_review",
+      "state": "complete",
+      "detail": "LLM loop finished with schema-valid output."
+    },
+    {
+      "name": "model_output_validation",
+      "state": "complete",
+      "detail": "1 model finding(s) passed validation."
+    },
+    {
+      "name": "report_validation",
+      "state": "complete",
+      "detail": "Evidence and preservation invariants hold."
+    }
+  ],
+  "findings": [
+    {
+      "issue_type": "unsupported_instant_bonus",
+      "detected_by": "llm",
+      "revision_check": "verified"
+    }
+  ]
+}

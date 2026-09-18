@@ -1,0 +1,454 @@
+{
+  "run_at_utc": "2026-09-17T03:57:04+00:00",
+  "split": "dev",
+  "n_campaigns": 10,
+  "dataset_version": "cg-synthetic-v1",
+  "review_date": "2026-09-15",
+  "matching_rule": "unique (campaign_id, issue_type) pairs; failed reviews count as zero predictions",
+  "label_notice": "Expected labels were authored with the synthetic data and need independent human verification. They do not establish real-world performance. NEVER load these at review time.",
+  "config": {
+    "max_tool_rounds": 4,
+    "llm_timeout_s": 60.0,
+    "llm_max_retries": 2,
+    "mcp_tool_timeout_s": 15.0,
+    "openai_model_env": "gpt-5-mini"
+  },
+  "versions": {
+    "mcp": "2.2.0",
+    "openai": "3.14.1",
+    "scikit-learn": "1.9.1",
+    "pydantic": "2.13.5"
+  },
+  "modes": {
+    "deterministic": {
+      "skipped": false,
+      "errors": {},
+      "model": null,
+      "wall_time_s": 1.8,
+      "metrics": {
+        "micro": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 2,
+          "precision": 1.0,
+          "recall": 0.778,
+          "f1": 0.875
+        },
+        "per_category": {
+          "incorrect_bonus_amount": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1
+          },
+          "unsupported_instant_bonus": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1
+          },
+          "incorrect_fee_claim": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1
+          },
+          "missing_disclosure": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1
+          },
+          "expired_offer": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1
+          },
+          "incorrect_offer_date": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1
+          },
+          "unknown_product": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1
+          },
+          "misleading_or_ambiguous_claim": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1
+          },
+          "instruction_injection": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1
+          }
+        },
+        "missed_high_severity": [
+          "C06:unsupported_instant_bonus"
+        ],
+        "false_positive_pairs": [],
+        "false_positives_on_clean_campaigns": {
+          "clean_campaigns": 1,
+          "campaigns_with_findings": 0,
+          "details": {}
+        },
+        "invalid_citations": {
+          "rejected_model_citations": 0,
+          "final_report_citations_not_in_catalog": 0
+        },
+        "citation_support_rate_on_true_positives": {
+          "definition": "share of matched findings citing at least one expected supporting source ID (labels with no expected sources excluded)",
+          "checked": 6,
+          "supported": 6,
+          "rate": 1.0
+        },
+        "completion": {
+          "total": 10,
+          "completed": 10,
+          "failed_with_exception": 0,
+          "status_counts": {
+            "needs_review": 10
+          },
+          "needs_review_rate": 1.0,
+          "required_checks_not_complete": {
+            "semantic_llm_review:not_run": 10,
+            "model_output_validation:not_run": 10,
+            "product_terms:incomplete": 1
+          }
+        },
+        "suggested_revisions": {
+          "total": 4,
+          "status_counts": {
+            "verified": 2,
+            "no_checkable_claims": 2
+          },
+          "flagged_for_human_review": 0,
+          "note": "Checks amounts, dates, durations, fee and timing claims against structured terms only; not semantic verification."
+        },
+        "latency_ms_small_sample": {
+          "n": 10,
+          "median": 4.0,
+          "p95": 24.8,
+          "note": "Small-sample local measurement; includes MCP stdio calls (and LLM calls in hybrid)."
+        }
+      },
+      "predictions": {
+        "C01": {
+          "status": "needs_review",
+          "issue_types": []
+        },
+        "C02": {
+          "status": "needs_review",
+          "issue_types": [
+            "incorrect_bonus_amount"
+          ]
+        },
+        "C03": {
+          "status": "needs_review",
+          "issue_types": [
+            "expired_offer"
+          ]
+        },
+        "C04": {
+          "status": "needs_review",
+          "issue_types": [
+            "incorrect_fee_claim"
+          ]
+        },
+        "C05": {
+          "status": "needs_review",
+          "issue_types": [
+            "missing_disclosure"
+          ]
+        },
+        "C06": {
+          "status": "needs_review",
+          "issue_types": []
+        },
+        "C07": {
+          "status": "needs_review",
+          "issue_types": [
+            "unknown_product"
+          ]
+        },
+        "C08": {
+          "status": "needs_review",
+          "issue_types": [
+            "instruction_injection"
+          ]
+        },
+        "C09": {
+          "status": "needs_review",
+          "issue_types": []
+        },
+        "C10": {
+          "status": "needs_review",
+          "issue_types": [
+            "incorrect_offer_date"
+          ]
+        }
+      }
+    },
+    "hybrid": {
+      "skipped": false,
+      "errors": {},
+      "model": "gpt-5-mini",
+      "wall_time_s": 188.13,
+      "metrics": {
+        "micro": {
+          "tp": 9,
+          "fp": 7,
+          "fn": 0,
+          "precision": 0.562,
+          "recall": 1.0,
+          "f1": 0.72
+        },
+        "per_category": {
+          "incorrect_bonus_amount": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1
+          },
+          "unsupported_instant_bonus": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1
+          },
+          "incorrect_fee_claim": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1
+          },
+          "missing_disclosure": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1
+          },
+          "expired_offer": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1
+          },
+          "incorrect_offer_date": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1
+          },
+          "unknown_product": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1
+          },
+          "misleading_or_ambiguous_claim": {
+            "tp": 1,
+            "fp": 7,
+            "fn": 0,
+            "precision": 0.125,
+            "recall": 1.0,
+            "f1": 0.222,
+            "support": 1
+          },
+          "instruction_injection": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1
+          }
+        },
+        "missed_high_severity": [],
+        "false_positive_pairs": [
+          "C01:misleading_or_ambiguous_claim",
+          "C03:misleading_or_ambiguous_claim",
+          "C04:misleading_or_ambiguous_claim",
+          "C05:misleading_or_ambiguous_claim",
+          "C06:misleading_or_ambiguous_claim",
+          "C08:misleading_or_ambiguous_claim",
+          "C10:misleading_or_ambiguous_claim"
+        ],
+        "false_positives_on_clean_campaigns": {
+          "clean_campaigns": 1,
+          "campaigns_with_findings": 1,
+          "details": {
+            "C01": [
+              "misleading_or_ambiguous_claim"
+            ]
+          }
+        },
+        "invalid_citations": {
+          "rejected_model_citations": 0,
+          "final_report_citations_not_in_catalog": 0
+        },
+        "citation_support_rate_on_true_positives": {
+          "definition": "share of matched findings citing at least one expected supporting source ID (labels with no expected sources excluded)",
+          "checked": 8,
+          "supported": 8,
+          "rate": 1.0
+        },
+        "completion": {
+          "total": 10,
+          "completed": 10,
+          "failed_with_exception": 0,
+          "status_counts": {
+            "issues_found": 9,
+            "needs_review": 1
+          },
+          "needs_review_rate": 0.1,
+          "required_checks_not_complete": {
+            "product_terms:incomplete": 1,
+            "semantic_llm_review:not_run": 1,
+            "model_output_validation:not_run": 1
+          }
+        },
+        "suggested_revisions": {
+          "total": 13,
+          "status_counts": {
+            "verified": 8,
+            "unsupported": 2,
+            "no_checkable_claims": 3
+          },
+          "flagged_for_human_review": 2,
+          "note": "Checks amounts, dates, durations, fee and timing claims against structured terms only; not semantic verification."
+        },
+        "latency_ms_small_sample": {
+          "n": 10,
+          "median": 19040.1,
+          "p95": 26381.6,
+          "note": "Small-sample local measurement; includes MCP stdio calls (and LLM calls in hybrid)."
+        }
+      },
+      "predictions": {
+        "C01": {
+          "status": "issues_found",
+          "issue_types": [
+            "misleading_or_ambiguous_claim"
+          ]
+        },
+        "C02": {
+          "status": "issues_found",
+          "issue_types": [
+            "incorrect_bonus_amount"
+          ]
+        },
+        "C03": {
+          "status": "issues_found",
+          "issue_types": [
+            "expired_offer",
+            "misleading_or_ambiguous_claim"
+          ]
+        },
+        "C04": {
+          "status": "issues_found",
+          "issue_types": [
+            "incorrect_fee_claim",
+            "misleading_or_ambiguous_claim"
+          ]
+        },
+        "C05": {
+          "status": "issues_found",
+          "issue_types": [
+            "misleading_or_ambiguous_claim",
+            "missing_disclosure"
+          ]
+        },
+        "C06": {
+          "status": "issues_found",
+          "issue_types": [
+            "misleading_or_ambiguous_claim",
+            "unsupported_instant_bonus"
+          ]
+        },
+        "C07": {
+          "status": "needs_review",
+          "issue_types": [
+            "unknown_product"
+          ]
+        },
+        "C08": {
+          "status": "issues_found",
+          "issue_types": [
+            "instruction_injection",
+            "misleading_or_ambiguous_claim"
+          ]
+        },
+        "C09": {
+          "status": "issues_found",
+          "issue_types": [
+            "misleading_or_ambiguous_claim"
+          ]
+        },
+        "C10": {
+          "status": "issues_found",
+          "issue_types": [
+            "incorrect_offer_date",
+            "misleading_or_ambiguous_claim"
+          ]
+        }
+      }
+    }
+  }
+}

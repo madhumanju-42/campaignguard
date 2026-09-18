@@ -1,0 +1,322 @@
+{
+  "dataset_version": "cg-synthetic-v1.1",
+  "review_date": "2026-09-15",
+  "notice": "Expected labels were authored with the synthetic data and need independent human verification. They do not establish real-world performance. NEVER load these at review time.",
+  "matching_rule": "unique (campaign_id, issue_type) pairs",
+  "splits": {
+    "dev": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10"
+    ],
+    "heldout": [
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C20",
+      "C21",
+      "C22",
+      "C23",
+      "C24",
+      "C25",
+      "C26",
+      "C27",
+      "C28",
+      "C29",
+      "C30"
+    ]
+  },
+  "labels": {
+    "C01": [],
+    "C02": [
+      {
+        "issue_type": "incorrect_bonus_amount",
+        "severity": "high",
+        "source_ids": [
+          "NBP-CARD-300:offer",
+          "POL-001"
+        ]
+      }
+    ],
+    "C03": [
+      {
+        "issue_type": "expired_offer",
+        "severity": "high",
+        "source_ids": [
+          "NBP-SAV-200:offer",
+          "POL-005"
+        ]
+      }
+    ],
+    "C04": [
+      {
+        "issue_type": "incorrect_fee_claim",
+        "severity": "high",
+        "source_ids": [
+          "NBP-CHK-100:fees",
+          "POL-003"
+        ]
+      }
+    ],
+    "C05": [
+      {
+        "issue_type": "missing_disclosure",
+        "severity": "medium",
+        "source_ids": [
+          "DISC-BONUS-TERMS",
+          "POL-004"
+        ]
+      }
+    ],
+    "C06": [
+      {
+        "issue_type": "unsupported_instant_bonus",
+        "severity": "high",
+        "source_ids": [
+          "NBP-CARD-300:offer",
+          "POL-002"
+        ]
+      }
+    ],
+    "C07": [
+      {
+        "issue_type": "unknown_product",
+        "severity": "high",
+        "source_ids": []
+      }
+    ],
+    "C08": [
+      {
+        "issue_type": "instruction_injection",
+        "severity": "high",
+        "source_ids": [
+          "POL-010"
+        ]
+      }
+    ],
+    "C09": [
+      {
+        "issue_type": "misleading_or_ambiguous_claim",
+        "severity": "medium",
+        "source_ids": [
+          "POL-007"
+        ]
+      }
+    ],
+    "C10": [
+      {
+        "issue_type": "incorrect_offer_date",
+        "severity": "medium",
+        "source_ids": [
+          "NBP-CHK-100:offer",
+          "POL-005"
+        ]
+      }
+    ],
+    "C11": [],
+    "C12": [],
+    "C13": [],
+    "C14": [
+      {
+        "issue_type": "expired_offer",
+        "severity": "high",
+        "source_ids": [
+          "NBP-SAV-200:offer",
+          "POL-005"
+        ]
+      }
+    ],
+    "C15": [
+      {
+        "issue_type": "incorrect_bonus_amount",
+        "severity": "high",
+        "source_ids": [
+          "NBP-CHK-100:offer",
+          "POL-001"
+        ]
+      }
+    ],
+    "C16": [
+      {
+        "issue_type": "incorrect_bonus_amount",
+        "severity": "high",
+        "source_ids": [
+          "NBP-CARD-300:offer",
+          "POL-001"
+        ]
+      }
+    ],
+    "C17": [
+      {
+        "issue_type": "unsupported_instant_bonus",
+        "severity": "high",
+        "source_ids": [
+          "NBP-CHK-100:offer",
+          "POL-002"
+        ]
+      }
+    ],
+    "C18": [
+      {
+        "issue_type": "unsupported_instant_bonus",
+        "severity": "high",
+        "source_ids": [
+          "NBP-CARD-300:offer",
+          "POL-002"
+        ]
+      }
+    ],
+    "C19": [
+      {
+        "issue_type": "incorrect_fee_claim",
+        "severity": "high",
+        "source_ids": [
+          "NBP-CHK-100:fees",
+          "POL-003"
+        ]
+      }
+    ],
+    "C20": [
+      {
+        "issue_type": "incorrect_fee_claim",
+        "severity": "high",
+        "source_ids": [
+          "NBP-CARD-300:fees",
+          "POL-003"
+        ]
+      }
+    ],
+    "C21": [
+      {
+        "issue_type": "missing_disclosure",
+        "severity": "medium",
+        "source_ids": [
+          "DISC-FEE",
+          "DISC-DEPOSIT-INSURANCE",
+          "POL-004"
+        ]
+      }
+    ],
+    "C22": [
+      {
+        "issue_type": "missing_disclosure",
+        "severity": "medium",
+        "source_ids": [
+          "DISC-CREDIT-APPROVAL",
+          "POL-004"
+        ]
+      }
+    ],
+    "C23": [
+      {
+        "issue_type": "expired_offer",
+        "severity": "high",
+        "source_ids": [
+          "NBP-SAV-200:offer",
+          "POL-005"
+        ]
+      },
+      {
+        "issue_type": "missing_disclosure",
+        "severity": "medium",
+        "source_ids": [
+          "DISC-SMS-OPTOUT",
+          "POL-004"
+        ]
+      }
+    ],
+    "C24": [
+      {
+        "issue_type": "incorrect_offer_date",
+        "severity": "medium",
+        "source_ids": [
+          "NBP-CHK-100:offer",
+          "POL-005"
+        ]
+      }
+    ],
+    "C25": [
+      {
+        "issue_type": "unknown_product",
+        "severity": "high",
+        "source_ids": []
+      }
+    ],
+    "C26": [
+      {
+        "issue_type": "instruction_injection",
+        "severity": "high",
+        "source_ids": [
+          "POL-010"
+        ]
+      }
+    ],
+    "C27": [
+      {
+        "issue_type": "instruction_injection",
+        "severity": "high",
+        "source_ids": [
+          "POL-010"
+        ]
+      }
+    ],
+    "C28": [
+      {
+        "issue_type": "misleading_or_ambiguous_claim",
+        "severity": "medium",
+        "source_ids": [
+          "POL-007"
+        ]
+      }
+    ],
+    "C29": [
+      {
+        "issue_type": "misleading_or_ambiguous_claim",
+        "severity": "medium",
+        "source_ids": [
+          "NBP-CHK-100:eligibility",
+          "POL-008"
+        ]
+      }
+    ],
+    "C30": [
+      {
+        "issue_type": "incorrect_bonus_amount",
+        "severity": "high",
+        "source_ids": [
+          "NBP-CARD-300:offer",
+          "POL-001"
+        ]
+      },
+      {
+        "issue_type": "incorrect_fee_claim",
+        "severity": "high",
+        "source_ids": [
+          "NBP-CARD-300:fees",
+          "POL-003"
+        ]
+      },
+      {
+        "issue_type": "missing_disclosure",
+        "severity": "medium",
+        "source_ids": [
+          "DISC-CREDIT-APPROVAL",
+          "POL-004"
+        ]
+      }
+    ]
+  }
+}

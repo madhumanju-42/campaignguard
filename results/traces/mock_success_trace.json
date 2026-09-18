@@ -1,0 +1,133 @@
+{
+  "trace_type": "mock",
+  "llm_provider": "SCRIPTED MOCK - not a live model",
+  "model": "mock-scripted",
+  "proves_live_integration": false,
+  "recorded_at_utc": "2026-09-17T01:07:19+00:00",
+  "scenario": "success",
+  "campaign_id": "C06",
+  "fault_injection": null,
+  "sanitization": "API keys/headers never recorded; strings truncated to 300 chars; reasoning items excluded.",
+  "criteria": {
+    "model_requested_at_least_one_tool": true,
+    "mcp_call_from_model_succeeded": true,
+    "call_went_through_mcp_client_log": true,
+    "semantic_llm_review_complete": true
+  },
+  "criteria_met": true,
+  "mcp_tool_calls": [
+    {
+      "tool": "get_product",
+      "arguments": {
+        "product_id": "NBP-CARD-300"
+      },
+      "requested_by": "orchestrator",
+      "duration_ms": 37.2,
+      "ok": true,
+      "error": null,
+      "source_ids": [
+        "NBP-CARD-300:offer",
+        "NBP-CARD-300:eligibility",
+        "NBP-CARD-300:fees",
+        "DISC-BONUS-TERMS",
+        "DISC-FEE",
+        "DISC-CREDIT-APPROVAL",
+        "DISC-SMS-OPTOUT"
+      ]
+    },
+    {
+      "tool": "check_campaign",
+      "arguments": {
+        "campaign": {
+          "campaign_id": "C06",
+          "product_id": "NBP-CARD-300",
+          "channel": "email",
+          "subject": "Your $500 bonus, instantly",
+          "body": "Apply for the Northbeam Business Rewards Card and get your $500 bonus instantly.\u2026"
+        },
+        "review_date": "2026-09-15"
+      },
+      "requested_by": "orchestrator",
+      "duration_ms": 6.3,
+      "ok": true,
+      "error": null,
+      "source_ids": []
+    },
+    {
+      "tool": "search_policy",
+      "arguments": {
+        "query": "instant bonus timing",
+        "channel": "email",
+        "top_k": 2
+      },
+      "requested_by": "llm",
+      "duration_ms": 11.9,
+      "ok": true,
+      "error": null,
+      "source_ids": [
+        "POL-002",
+        "POL-001"
+      ]
+    }
+  ],
+  "agent_trace": [
+    {
+      "round": 0,
+      "event": "llm_tool_request",
+      "tool": "search_policy",
+      "call_id": "call_1",
+      "arguments": {
+        "query": "instant bonus timing",
+        "channel": "email",
+        "top_k": 2
+      },
+      "mcp_ok": true,
+      "duration_ms": 11.9,
+      "returned_source_ids": [
+        "POL-002",
+        "POL-001"
+      ]
+    },
+    {
+      "round": 1,
+      "event": "final_output",
+      "schema_valid": true,
+      "n_findings": 1
+    }
+  ],
+  "review_status": "issues_found",
+  "required_checks": [
+    {
+      "name": "product_terms",
+      "state": "complete",
+      "detail": "Product terms retrieved via MCP."
+    },
+    {
+      "name": "deterministic_checks",
+      "state": "complete",
+      "detail": "0 deterministic finding(s)."
+    },
+    {
+      "name": "semantic_llm_review",
+      "state": "complete",
+      "detail": "LLM loop finished with schema-valid output."
+    },
+    {
+      "name": "model_output_validation",
+      "state": "complete",
+      "detail": "1 model finding(s) passed validation."
+    },
+    {
+      "name": "report_validation",
+      "state": "complete",
+      "detail": "Evidence and preservation invariants hold."
+    }
+  ],
+  "findings": [
+    {
+      "issue_type": "unsupported_instant_bonus",
+      "detected_by": "llm",
+      "revision_check": null
+    }
+  ]
+}
